@@ -3,6 +3,9 @@ import { Outlet, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
+import { SiteFooter } from '@/components/site-footer'
+import { SiteHeader } from '@/components/site-header'
+
 import '../styles.css'
 
 export const Route = createRootRoute({
@@ -11,8 +14,12 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <>
-      <Outlet />
+    <div className="flex min-h-svh flex-col">
+      <SiteHeader />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <SiteFooter />
       <TanStackDevtools
         config={{
           position: 'bottom-right',
@@ -24,6 +31,6 @@ function RootComponent() {
           },
         ]}
       />
-    </>
+    </div>
   )
 }
